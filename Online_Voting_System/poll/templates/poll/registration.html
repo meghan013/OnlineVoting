@@ -17,15 +17,24 @@
                 <div class="form-group">
                   <label for="{{ field.id_for_label }}">{{ field.label }}</label>
                   {{ field }}
+                  {% if field.name == 'email' %}
+                    <small class="form-text text-muted">Example: abc@gmail.com</small>
+                  {% endif %}
                   {% for error in field.errors %}
                     <small class="form-text text-danger">{{ error }}</small>
                   {% endfor %}
                   {% if field.name == 'username' %}
-                    <small class="form-text text-muted">Username should contain letters and digits.</small>
+                    <small class="form-text text-muted">Username should contain letters and digits and be less than 13 characters.</small>
                   {% elif field.name == 'password' %}
                     <small class="form-text text-muted">Password should be more than 6 characters long and contain letters, digits, and @/./+/-/_ only.</small>
-                  {% elif field.name == 'age' %}
-                    <small class="form-text text-muted">Age should be between 18 and 100.</small>
+                  {% elif field.name == 'date_of_birth' %}
+                    <small class="form-text text-muted">Enter your date of birth.</small>
+                  {% endif %}
+                  {% if field.name == 'first_name' %}
+                    <small class="form-text text-muted">First name should contain only alphabetic characters and be less than 8 characters.</small>
+                  {% endif %}
+                  {% if field.name == 'last_name' %}
+                    <small class="form-text text-muted">Last name should contain only alphabetic characters and be less than 8 characters.</small>
                   {% endif %}
                 </div>
               {% endfor %}
@@ -37,6 +46,10 @@
     </div>
   </div>
 </body>
+
+
+
+
 <style>
   body {
     background: linear-gradient(45deg, #FFFDCB, #FFB38E);

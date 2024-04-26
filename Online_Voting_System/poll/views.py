@@ -49,7 +49,7 @@ def activateEmail(request, user, email):
         # Define email subject and message
         subject = 'Activate Your Account'
         message = f'Dear {user}, please click the following link to activate your account: {request.build_absolute_uri("/login/")}'
-        message += f'Your voter ID is: {VoterID.objects.get(user=user).voter_id}\n'
+
         # Send the email
         send_mail(subject, message, settings.EMAIL_HOST_USER, [email])
 
@@ -72,15 +72,16 @@ def registrationView(request):
                 messages.error(request, 'Passwords do not match.')
                 return redirect('login')
 
-            # Validate password complexity
+            # Validate password complexity and date of birth
             try:
                 validate_complex_password(password)
             except ValidationError as e:
                 messages.error(request, ', '.join(e.messages))
                 return redirect('login')
-            age = cd['age']
-            if not 18 <= age < 100:
-                messages.error(request, 'You are not eligible. You must be between 18 and below 100 to vote.')
+            date_of_birth = cd['date_of_birth']
+            # Ensure date of birth is before 2006 (at least 18 years old)
+            if date_of_birth.year >= 2006:
+                messages.error(request, 'You must be at least 18 years old to register.')
                 return redirect('login')
             user = form.save(commit=False)
             user.set_password(password)
@@ -89,7 +90,7 @@ def registrationView(request):
             # Generate and save a unique 4-digit voter ID for the user
             voter_id = generate_unique_voter_id()
             VoterID.objects.create(user=user, voter_id=voter_id)
-            messages.success(request, f'Your voter ID is: {voter_id}')
+
             activateEmail(request, user, form.cleaned_data.get('email'))
             return redirect('home')
         else:
@@ -123,20 +124,12 @@ def loginView(request):
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
-            voter_id = form.cleaned_data['voter_id']
 
             user = authenticate(request, username=username, password=password)
 
             if user is not None:
-                try:
-                    voter_id_entry = VoterID.objects.get(user=user)
-                    if voter_id == voter_id_entry.voter_id:
-                        login(request, user)
-                        return redirect('dashboard')
-                    else:
-                        messages.error(request, 'Invalid voter ID.')
-                except VoterID.DoesNotExist:
-                    messages.error(request, 'Voter ID not found for this user.')
+                login(request, user)
+                return redirect('dashboard')
             else:
                 messages.error(request, 'Invalid username or password.')
     else:
@@ -190,31 +183,25 @@ def candidateView(request, pos):
     obj = get_object_or_404(Position, pk=pos)
 
     if request.method == "POST":
-
-
         temp = ControlVote.objects.get_or_create(user=request.user, position=obj)[0]
 
         if temp.status == False:
-
-
-            temp2 = Candidate.objects.get(pk=request.POST.get(obj.title))
+            selected_candidate_id = request.POST.get(obj.title)
+            selected_candidate = get_object_or_404(Candidate, pk=selected_candidate_id)
+            temp2 = Candidate.objects.get(pk=selected_candidate_id)
             temp2.total_vote += 1
             temp2.save()
             temp.status = True
             temp.save()
-            messages.success(request, 'your vote has been casted Succesfully.')
+            messages.success(request, f'Your vote for {selected_candidate.name} in the position of {obj.title} has been casted successfully.')
+            logout(request)  # Logout the user after voting
             return render(request, 'poll/home.html', {'obj': obj})
-
-
         else:
-
-            messages.success(request, 'you already have been voted for this position.')
+            messages.success(request, 'You have already voted for this position.')
             return render(request, 'poll/home.html', {'obj': obj})
 
     else:
-
         return render(request, 'poll/candidate.html', {'obj': obj})
-
 
 
 def resultView(request):
