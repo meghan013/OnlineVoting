@@ -28,20 +28,37 @@ Fork the repository Create your feature branch (git checkout -b feature/YourFeat
 
 OUTPUT:
 
+![Screenshot (587)](https://github.com/meghan013/OnlineVoting/assets/128183027/9dce0b9a-bd6a-4631-85b5-c8c7d8f388ac)
 
-![image](https://github.com/kesavaTDP/Online_Voting_System/assets/141147408/913d2575-232f-4232-b098-4c118540c1ea)
+![Screenshot (588)](https://github.com/meghan013/OnlineVoting/assets/128183027/7a2f4d50-531a-4973-b6a5-82c36f7ff45c)
 
-![image](https://github.com/kesavaTDP/Online_Voting_System/assets/141147408/3f03ec1f-64c0-4b4e-a0c4-29294217b869)
+![Screenshot (589)](https://github.com/meghan013/OnlineVoting/assets/128183027/0820992c-1ea0-4e9f-b305-b3e8b54d6b80)
 
-![image](https://github.com/kesavaTDP/Online_Voting_System/assets/141147408/c486a5d2-79b4-42ac-adf9-6ff7753e435a)
+![Screenshot (590)](https://github.com/meghan013/OnlineVoting/assets/128183027/7e08e05c-d660-454d-93fe-ee9f16cc4dc0)
 
-![image](https://github.com/kesavaTDP/Online_Voting_System/assets/141147408/33ce4023-8ced-48f0-a608-66210f5100b9)
+![Screenshot (591)](https://github.com/meghan013/OnlineVoting/assets/128183027/6ef3d45a-828e-438f-bfa5-e0f9a252c603)
 
-![image](https://github.com/kesavaTDP/Online_Voting_System/assets/141147408/7a4855b3-70b6-43ab-afd5-62f6d48678c0)
+![Screenshot (592)](https://github.com/meghan013/OnlineVoting/assets/128183027/1ef71265-54c3-4726-aad0-c757575bc8c0)
 
-![image](https://github.com/kesavaTDP/Online_Voting_System/assets/141147408/595ee189-af19-495b-b0c0-92452a568f78)
+![Screenshot (593)](https://github.com/meghan013/OnlineVoting/assets/128183027/bb1970b8-d553-4a8c-bd2b-29ff6495b37b)
 
-![image](https://github.com/kesavaTDP/Online_Voting_System/assets/141147408/0579daa4-0b4e-4f89-89cd-0c1f9fc1a219)
+![Screenshot (594)](https://github.com/meghan013/OnlineVoting/assets/128183027/be8b296f-c675-43ba-b000-33547b1ac68f)
 
-![image](https://github.com/kesavaTDP/Online_Voting_System/assets/141147408/96e79b3b-1ff9-4ea4-a8b2-b099a1bb5702)
+![Screenshot (595)](https://github.com/meghan013/OnlineVoting/assets/128183027/3638ed3d-7875-425d-8a4b-5a3fc28e851f)
+
+![Screenshot (595)](https://github.com/meghan013/OnlineVoting/assets/128183027/e02dbae8-e162-4778-8952-aba43e036584)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
